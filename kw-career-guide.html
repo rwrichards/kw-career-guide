@@ -353,6 +353,7 @@
 
         <button class="submit-btn" onclick="handleSubmit()">Send Me the Guide →</button>
 
+
         <p class="privacy-note">No spam. Just the guide. We respect your inbox.</p>
       </div>
 
@@ -377,9 +378,10 @@
 </div>
 
 <script>
-  function handleSubmit() {
+  async function handleSubmit() {
     const fname = document.getElementById('fname').value.trim();
     const email = document.getElementById('email').value.trim();
+    const btn = document.querySelector('.submit-btn');
 
     if (!fname) {
       document.getElementById('fname').focus();
@@ -393,16 +395,29 @@
       return;
     }
 
-    // Hide form, show success
+    // Show loading state
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+
+    try {
+      await fetch('https://formspree.io/f/xykqwdbl', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: fname,
+          email: email,
+          _subject: 'Your KW Mountain Properties Career Guide',
+          _replyto: email,
+          message: `Hi ${fname}, thanks for your interest in building a real estate career in the Vail Valley! Here is your free guide: https://drive.google.com/file/d/1sk5-AQP_AEhywqD9uADuBCNpXpNSDhFN/view?usp=sharing — Ryan Richards, KW Mountain Properties`
+        })
+      });
+    } catch(e) {
+      console.log('Form submission error:', e);
+    }
+
+    // Show success regardless (don't block on network error)
     document.getElementById('form-section').style.display = 'none';
     document.getElementById('success-section').style.display = 'block';
-
-    // Optional: send to a form backend like Formspree
-    // fetch('https://formspree.io/f/YOUR_FORM_ID', {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify({ name: fname, email: email })
-    // });
   }
 
   // Allow Enter key to submit
