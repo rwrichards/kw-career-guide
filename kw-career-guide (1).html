@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Next Career Starts Here | KW Mountain Properties</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --kw-red: #C8102E;
+      --kw-dark: #1A1A1A;
+      --kw-mid: #3D3D3D;
+      --kw-light: #F7F5F2;
+      --kw-white: #FFFFFF;
+      --kw-accent: #8B1E2F;
+      --mountain-blue: #2C3E50;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--kw-light);
+      color: var(--kw-dark);
+      min-height: 100vh;
+    }
+
+    /* HERO */
+    .hero {
+      background: var(--kw-dark);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 48px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+
+    /* Mountain silhouette SVG background */
+    .mountain-bg {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      opacity: 0.07;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      max-width: 680px;
+    }
+
+    .kw-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--kw-red);
+      color: white;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 2px;
+      margin-bottom: 32px;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2.4rem, 7vw, 4.2rem);
+      font-weight: 900;
+      color: var(--kw-white);
+      line-height: 1.08;
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--kw-red);
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      color: rgba(255,255,255,0.65);
+      line-height: 1.6;
+      margin-bottom: 48px;
+      font-weight: 400;
+    }
+
+    /* STATS ROW */
+    .stats {
+      display: flex;
+      gap: 32px;
+      justify-content: center;
+      margin-bottom: 52px;
+      flex-wrap: wrap;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--kw-red);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.45);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: 6px;
+    }
+
+    .stat-divider {
+      width: 1px;
+      background: rgba(255,255,255,0.12);
+      align-self: stretch;
+    }
+
+    /* FORM CARD */
+    .form-card {
+      background: var(--kw-white);
+      border-radius: 4px;
+      padding: 36px 32px;
+      width: 100%;
+      max-width: 440px;
+      margin: 0 auto;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.4);
+    }
+
+    .form-card h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--kw-dark);
+      margin-bottom: 6px;
+    }
+
+    .form-card p {
+      font-size: 0.88rem;
+      color: var(--kw-mid);
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+
+    .form-group {
+      margin-bottom: 14px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--kw-mid);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 13px 16px;
+      border: 1.5px solid #E0DCDA;
+      border-radius: 3px;
+      font-size: 0.95rem;
+      font-family: 'Inter', sans-serif;
+      color: var(--kw-dark);
+      background: #FAFAFA;
+      transition: border-color 0.2s;
+      outline: none;
+    }
+
+    .form-group input:focus {
+      border-color: var(--kw-red);
+      background: white;
+    }
+
+    .form-group input::placeholder {
+      color: #BBBBBB;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 15px;
+      background: var(--kw-red);
+      color: white;
+      border: none;
+      border-radius: 3px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+      margin-top: 8px;
+      letter-spacing: 0.03em;
+      transition: background 0.2s, transform 0.1s;
+    }
+
+    .submit-btn:hover { background: var(--kw-accent); }
+    .submit-btn:active { transform: scale(0.99); }
+
+    .privacy-note {
+      font-size: 0.72rem;
+      color: #AAAAAA;
+      text-align: center;
+      margin-top: 14px;
+      line-height: 1.5;
+    }
+
+    /* SUCCESS STATE */
+    .success-state {
+      display: none;
+      text-align: center;
+      padding: 12px 0;
+    }
+
+    .success-icon {
+      width: 56px;
+      height: 56px;
+      background: #F0FFF4;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+    }
+
+    .success-state h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: var(--kw-dark);
+      margin-bottom: 8px;
+    }
+
+    .success-state p {
+      font-size: 0.88rem;
+      color: var(--kw-mid);
+      margin-bottom: 20px;
+    }
+
+    .pdf-btn {
+      display: inline-block;
+      padding: 14px 32px;
+      background: var(--kw-red);
+      color: white;
+      text-decoration: none;
+      border-radius: 3px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: background 0.2s;
+    }
+
+    .pdf-btn:hover { background: var(--kw-accent); }
+
+    /* BOTTOM STRIP */
+    .bottom-strip {
+      background: var(--kw-dark);
+      padding: 20px 24px;
+      text-align: center;
+    }
+
+    .bottom-strip p {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 0.05em;
+    }
+
+    @media (max-width: 480px) {
+      .stat-divider { display: none; }
+      .form-card { padding: 28px 20px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+<section class="hero">
+
+  <!-- Mountain silhouette -->
+  <svg class="mountain-bg" viewBox="0 0 1440 320" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path fill="white" d="M0,320 L0,200 L120,120 L240,180 L360,80 L480,160 L600,40 L720,140 L840,60 L960,150 L1080,90 L1200,170 L1320,100 L1440,160 L1440,320 Z"/>
+  </svg>
+
+  <div class="hero-content">
+
+    <div class="kw-badge">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="white" stroke-width="1.5"/><path d="M6 3v3l2 1.5" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
+      KW Mountain Properties · Edwards &amp; Vail Valley
+    </div>
+
+    <h1>Your next career<br/><em>starts here.</em></h1>
+
+    <p class="hero-sub">
+      Build a real estate career in one of Colorado's most exciting markets —
+      where luxury mountain living meets serious earning potential.
+    </p>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-num">$25M+</div>
+        <div class="stat-label">Team leader production</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <div class="stat-num">Top 5%</div>
+        <div class="stat-label">KW agents nationally</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <div class="stat-num">65+</div>
+        <div class="stat-label">Agents &amp; growing</div>
+      </div>
+    </div>
+
+    <div class="form-card">
+
+      <div id="form-section">
+        <h2>Get the free guide</h2>
+        <p>Enter your name and email — we'll send it straight to your inbox and you can open it instantly below.</p>
+
+        <div class="form-group">
+          <label for="fname">First Name</label>
+          <input type="text" id="fname" placeholder="Ryan" autocomplete="given-name"/>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" placeholder="ryan@example.com" autocomplete="email"/>
+        </div>
+
+        <button class="submit-btn" onclick="handleSubmit()">Send Me the Guide →</button>
+
+
+        <p class="privacy-note">No spam. Just the guide. We respect your inbox.</p>
+      </div>
+
+      <div class="success-state" id="success-section">
+        <div class="success-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#22C55E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>You're all set!</h3>
+        <p>Your free guide is ready. Tap below to open it now.</p>
+        <a class="pdf-btn" href="https://drive.google.com/file/d/1sk5-AQP_AEhywqD9uADuBCNpXpNSDhFN/view?usp=sharing" target="_blank" rel="noopener">
+          Open the Free Guide →
+        </a>
+        <p class="privacy-note" style="margin-top:16px;">A copy is also on its way to your email.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="bottom-strip">
+  <p>© 2026 KW Mountain Properties · Edwards, Colorado · Each office independently owned and operated</p>
+</div>
+
+<script>
+  async function handleSubmit() {
+    const fname = document.getElementById('fname').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const btn = document.querySelector('.submit-btn');
+
+    if (!fname) {
+      document.getElementById('fname').focus();
+      document.getElementById('fname').style.borderColor = '#C8102E';
+      return;
+    }
+
+    if (!email || !email.includes('@')) {
+      document.getElementById('email').focus();
+      document.getElementById('email').style.borderColor = '#C8102E';
+      return;
+    }
+
+    // Show loading state
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+
+    try {
+      await fetch('https://formspree.io/f/xykqwdbl', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: fname,
+          email: email,
+          _subject: 'Your KW Mountain Properties Career Guide',
+          _replyto: email,
+          message: `Hi ${fname}, thanks for your interest in building a real estate career in the Vail Valley! Here is your free guide: https://drive.google.com/file/d/1sk5-AQP_AEhywqD9uADuBCNpXpNSDhFN/view?usp=sharing — Ryan Richards, KW Mountain Properties`
+        })
+      });
+    } catch(e) {
+      console.log('Form submission error:', e);
+    }
+
+    // Show success regardless (don't block on network error)
+    document.getElementById('form-section').style.display = 'none';
+    document.getElementById('success-section').style.display = 'block';
+  }
+
+  // Allow Enter key to submit
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') handleSubmit();
+  });
+</script>
+
+</body>
+</html>
